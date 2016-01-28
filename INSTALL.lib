@@ -1,0 +1,41 @@
+# File: INSTALL.lib		-*- text -*- 
+# Created by: Alex Knowles (alex@ed.ac.uk) Mon Dec  4 14:29:22 1995
+# Last Modified: Time-stamp: <05 Dec 95 1457 Alex Knowles> 
+
+This file tells you how to install MPEGelib
+
+you might find the html version in ./html/install.html slightly more palatable
+
+First of all you need Berkeley's mpeg_encode version 1.5b you should
+be able to get this from either....
+
+ftp://mm-ftp.cs.Berkeley.edu/
+or
+ftp://ftp.tardis.ed.ac.uk/users/ark/mpegelib/
+
+uncompress & untar the distribution of mpeg_encode and edit the
+Makefile to get it to compile.
+
+Once compiled you have a lovely MPEG encoder to play around with.
+
+now uncompress & untar the distribution of MPEGelib and copy all the
+files in into the mpeg_encode directory (cp * ../mpeg_encode)
+
+edit the makefile to make sure the install directories are right and
+that if you need ranlib it's used
+
+now type 
+
+make -f Makefile.lib
+
+This should work fine (if you did the config right for the first
+section) if not mail me!
+
+now if that worked then just type 
+make -f Makefile.lib install
+and it should put the header's in the right place
+
+if you have any problems please read the HTML pages and if that fails
+to help then please mail me at alex@ed.ac.uk
+
+all comments and suggestions welcome!

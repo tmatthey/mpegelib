@@ -1,0 +1,91 @@
+<HTML><HEAD><TITLE>MPEGe Lib</TITLE></HEAD><BODY>
+Last Modified: Time-stamp: "08 Dec 95 2329 Alex Knowles"
+<H1 ALIGN=CENTER>MPEGe Lib</H1>
+
+<P>
+<A HREF="http://www-plateau.cs.berkeley.edu/mpeg/mpeg_encode.html">MPEG
+encoding engine</A> &copy; 1995 The Regents of the University of California
+<BR>
+Library Front end &copy; 1995 <A HREF="http://www.tardis.ed.ac.uk/~ark/">Alex R Knowles</A> (<A HREF="mailto:alex@ed.ac.uk">alex@ed.ac.uk</a>)</p>
+
+<H2>About the library</h2>
+
+<P>MPEGe lib is a library designed to allow you to create MPEG
+movies from your application. It is really easy to use and
+hides a lot of the complexities of MPEG streams from the user
+(although lots of options are available to be changed).
+</P>
+
+<P>The encoder library uses the <A
+HREF="http://www-plateau.cs.berkeley.edu/mpeg/mpeg_encode.html">Berkeley
+MPEG encoder</A> engine to do all the complicated MPEG stuff. so
+remember full credit for the nifty things should goto its authors</P>
+
+<h2>Using the Library</H2>
+
+<P>About the most complicated thing you are going to have to do to use
+the library is work out what the format of your input images are going
+to be. Once you have done this the library consists of 3 simple
+functions
+
+<UL>
+  <LI><A HREF="MPEGe_open.html">MPEGe_open</A> for initialising the encoder
+  <LI><A HREF="MPEGe_image.html">MPEGe_image</A> called each time you
+  want to add a frame to the sequence
+  <LI><A HREF="MPEGe_close.html">MPEGe_close</A> called to end the
+  MPEG sequence
+</UL>
+
+<P>At the moment the library can only make 1 MPEG movie at a time (if
+you want more go and write your own library eh?). Also at the moment
+it can only make one mpeg movie per session (although I hope to fix
+this in future releases)</P>
+
+<P>Once the library is compiled and installed you simply need to
+compile your apps with the <tt>-lmpege</tt> flag and <I>tah dah</I>
+instant MPEG's.  I have written a <A HREF="install.html">page</A>
+describing the compilation and installation process. There's also a
+page describing the <A HREF="example.html">example app.</A> you get
+with MPEGelib to make MPEG movies from some sample PPM images</P>
+
+<P><B>IMPORTANT:</B> before you decide you want MPEGelib please read
+this important <A HREF="copyright.html">copyright notice</A>.</P>
+
+<P>I realise my html style is not perfect and links my not be natural
+for all you folk, so for all you types I have a file listing all the
+HTML files below this one (just to make sure you didn't miss
+anything!). It's sorted in last modified order and it called <A HREF="whatsnew.html">whatsnew</A></P>
+
+<H2>Other MPEG stuff</H2>
+
+<P>As I mentioned before <B>MPEGelib</B> is based upon the Berkeley
+parallel MPEG encoder (although the library is in no way
+parallel). The choice for using this encoder was easy to make. The
+Berkeley encoder is extremely well written and support from Berkeley
+has been excellent throughout the development of this library. You may
+or may not be aware of an <A
+HREF="http://www.mni.mcgill.ca/~greg/mpeg.html">MPEG decoding
+library</A> (the reason mine is not called simply MPEGlib). This too
+was based on code from Berkeley, the <A
+HREF="http://www-plateau.cs.berkeley.edu/mpeg/mpeg_play.html">
+Berkeley MPEG decoder</A>.
+
+<P>Below are some useful links to allow you to go far way to have a
+look at
+<UL>
+  <LI><A HREF="ftp://mm-ftp.cs.berkeley.edu/pub/multimedia/mpeg/">Berkeley
+       MPEG</A> FTP site.
+  <LI><A HREF="ftp://ftp.mni.mcgill.ca/pub/mpeg/">MPEG lib</A> ftp site
+  <LI><A HREF="http://www-plateau.cs.berkeley.edu/mpeg/">Berkeley
+       MPEG research</A> group's pages
+  <LI><A HREF="ftp://ftp.tardis.ed.ac.uk/users/ark/mpegelib/">MPEGe lib</A>
+       ftp site
+</UL>
+
+<P>
+
+<BR CLEAR=ALL><HR WIDTH=50% SIZE=5><P ALIGN=CENTER>
+<FONT SIZE=5><A HREF="http://www.tardis.ed.ac.uk/~ark/">
+<FONT SIZE=7>A</FONT>lex <FONT SIZE=7>K</FONT>nowles</a>
+<A HREF="mailto:alex@ed.ac.uk">(alex@ed.ac.uk)</A></FONT></p>
+</BODY></HTML>

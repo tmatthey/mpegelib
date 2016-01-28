@@ -1,0 +1,88 @@
+<HTML><HEAD><TITLE>Installing MPEGelib</TITLE></HEAD><BODY>
+Last Modified: Time-stamp: "08 Dec 95 2353 Alex Knowles"
+<H1 ALIGN=CENTER>Installing MPEGelib</H1>
+
+<P>Before you can install MPEGelib you'll need to get a working copy
+of Berkeley's mpeg_encode. The official ftp site is at the <A
+HREF="ftp://mm-ftp.cs.berkeley.edu/pub/multimedia/mpeg/">Berkeley
+MPEG</A> FTP site. MPEGelib was developed with version 1.5b but may
+work with others</P>
+
+<P>I find the connection to that site very slow (from good old
+Blighty) so I have a copy in <A
+HREF="ftp://ftp.tardis.ed.ac.uk/users/ark/mpegelib/">my ftp space</A>.
+NOTE this is not a copy of the original distribution so use at your
+own risk (just zipped up my mpeg_encode directory after typing make
+clean!) Most noticeably the jpeg library is missing either get it and
+compile it or use the source file <TT>nojpeg.c</TT> .</P>
+
+<P>I've also found the source at
+<A HREF="ftp://ftp.sunet.se/pub/multimedia/video/mpeg/Berkeley/encode/mpeg_encode-1.5b-src.tar.gz">ftp.sunet.se</A>
+so you might want to go and have a look there</P>     
+
+<P>Uncompress and untar it and then edit the <TT>Makefile</TT> to get it to
+compile and <I>tah dah</I> you have an MPEG encoder (one of the best)</P>
+
+<P>Now get my distribution of MPEGelib (only available via email at
+the moment) and uncompress &amp; untar it. Now copy all the files into
+the mpeg_encode directory and type<BR>
+<TT>make -f Makefile.lib</TT>
+</P
+
+<P>It all should work fine! I have included a fixed version of
+<TT>parallel.c</TT> called <TT>parallel.fix.c</TT>. If you don't want to use my version
+then just edit the Makefile.lib</P>
+
+<P>After you've checked the paths in <TT>Makefile.lib</TT> do a <BR> <TT>make
+-f Makefile.lib install</TT> and it should install it for you</P>
+
+<P>Now you have the lib installed, cd into libexample and edit the
+Makefile and type make. Now you have a simple MPEG encoder which reads
+in some ppm images and makes a movie. I've written a page describing
+the <A HREF="example.html">example app</A>
+
+<P>Happy Coding</P>
+<HR>
+<P>So far I have managed to compile MPEGelib on a Sun (solaris) HP,
+Linux and now an SG (irix). I have produced the following notes to
+help you compile on different systems</P>
+
+<H3>Sun</H3>
+<P>The library was developed on a sun so it feels most at home
+here. Remember to link <TT>-lnsl -lsocket</TT> in the <TT>Makefile</TT> for <A
+HREF="example.html">simple_encode</A>
+
+<H3>HP</H3>
+<P>Compiled fine on the HP (don't forget to remove <TT>-lsocket
+-lnsl</TT> from the <TT>Makefile</TT> for <A
+HREF="example.html">simple_encode</A>
+
+<H3>Linux</H3>
+<P>Don't forget to use ranlib!
+
+<H3>SGI</H3>
+
+<P>this produced the most errors and this is because to make the
+Makefile simple I am including both <TT>mpeg.c</TT> &amp;
+<TT>ARKmpeg.c</TT> (my modified version of <TT>mpeg.c</TT> to allow me
+to use it's static functions).
+
+<P>To solve this problem either
+<UL>
+  <LI>remove <TT>mpeg.c</TT> &amp; <TT>mpeg.o</TT> from the variables in
+       mpeg_encode's <TT>Makefile</TT>
+  <LI>run <TT>make -f Makefile.lib ARKmpeg.c</TT> then <TT>rm
+       mpeg.c</TT> and <TT>ln -s ARKmpeg.c mpeg.c</TT> and finally
+       remove <TT>ARKmpeg.c</TT> from the list in <TT>Makefile.lib</TT>
+</UL>
+The first option is simpler (but stops mpeg_encode compiling),
+but the second allows you to compile both mpegelib &amp;
+mpeg_encode
+<P>Also on the SG I couldn't get install to work so I just
+replaced it with <TT>cp</TT>
+
+<BR CLEAR=ALL><HR WIDTH=50% SIZE=5><P ALIGN=CENTER>
+<FONT SIZE=5><A HREF="http://www.tardis.ed.ac.uk/~ark/">
+<FONT SIZE=7>A</FONT>lex <FONT SIZE=7>K</FONT>nowles</a>
+<A HREF="mailto:alex@ed.ac.uk">(alex@ed.ac.uk)</A></FONT></p>
+</BODY></HTML>

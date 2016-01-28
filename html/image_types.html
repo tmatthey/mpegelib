@@ -1,0 +1,89 @@
+<HTML><HEAD><TITLE>Image Types</TITLE></HEAD><BODY>
+Last Modified: Time-stamp: "08 Dec 95 2323 Alex Knowles"
+<H1 ALIGN=CENTER>Image Types</H1>
+
+<P>It would be impossible for me to guess every way that you lot
+store images in your applications. It would also be unreasonable for
+me to expect you to give me your images in a way which suited me. So as
+a solution to this problem I have used a solution used by the SDSC
+Image Library. You do not need this library to use MPEGelib, but it's
+certainly worth looking at.</P>
+
+<P>The structure that is passed to <A
+HREF="MPEGe_frame.html">MPEGe_image</A> looks like this</P>
+<pre>
+typedef struct ImVfb
+{
+  int    vfb_width;     <I>/* # cols                                    */</I>
+  int    vfb_height;    <I>/* # rows                                    */</I>
+  int    vfb_fields;    <I>/* mask specifying what is in each pixel     */</I>
+  int    vfb_nbytes;    <I>/* # bytes per pixel                         */</I>
+  ImClt  *vfb_clt;      <I>/* points to attached CLT, if any            */</I>
+  int    vfb_roff;      <I>/* offset (in bytes) to reach red            */</I>
+  int    vfb_goff;      <I>/* green                                     */</I>
+  int    vfb_boff;      <I>/* blue                                      */</I>
+  int    vfb_aoff;      <I>/* alpha-value                               */</I>
+  int    vfb_i8off;     <I>/* color index                               */</I>
+  int    vfb_wpoff;     <I>/* write protect offset                      */</I>
+  int    vfb_i16off;    <I>/* color index                               */</I>
+  int    vfb_zoff;      <I>/* z-value                                   */</I>
+  int    vfb_moff;      <I>/* mono                                      */</I>
+  int    vfb_fpoff;     <I>/* floating point                            */</I>
+  int    vfb_ioff;      <I>/* integer                                   */</I>
+  ImVfbPtr vfb_pfirst;  <I>/* points to first pixel                     */</I>
+  ImVfbPtr vfb_plast;   <I>/* points to last pixel                      */</I>
+} ImVfb;
+</pre>
+
+<P>I have found this structure very flexible for storing most internal
+representations for images.</P>
+
+<P>Basically what you have to do is set vfb_nbytes to the number of
+bytes per pixel, set the width & height and then set the R G &amp; B
+offsets</P>
+
+<P>The offsets are now many bytes into the pixel the Red component is,
+so if your image is stored as ARGB (alpha, red, green, blue) then
+r_off=1 g_off=2 b_off=3.</P>
+
+<P>when I was considering how to solve this problem I though about all
+the following Image types. Although some of them cannot be described
+in the ImVfb structure it would be very easy + quick to convert an
+image of this type into one described by a ImVfb. I have marked the
+types which cannot be described by an ImVfb</P>
+
+<P>The possible image types I have thought of so far are
+<UL>
+  <LI TYPE=square>is there an Alpha bit there as well? (is it argb or rgba?)
+  <LI TYPE=square>Is the ordering RGB or BGR
+  <LI TYPE=disc><B>*</B> is the image 2D or 3D i.e. is it just one array, or
+  an array or arrays
+  <LI><B>*</B> Does it contain RGB values or does it contain all the red values
+  then all the green then all the blue
+  <LI><B>*</B> Is your image not even RGB it could be YUV
+  <LI><B>*</B> You may have 3 arrays one for each R,G,B (or YUV) (these arrays
+  might be 2D or 3D)
+  <LI><B>*</B> Arghh I think I'm going mad with all these options!
+</UL>
+
+<P>trying to cope with all these formats would make the library slower
+and more difficult to code :-) I may support YUV frames if anyone
+suggests it?</P>
+
+<P>The data given in the image is copied into MPEGelib's own data
+space so you can set up the ImVfb and fill it up and send it off as many
+times as you want</P>
+
+<P>There is a useful function <TT><A
+HREF="MPEGe_ImVfbAlloc.html">MPEGe_ImVfbAlloc</A></TT> to allow you to
+allocate memory for an ImVfb</P>
+
+<P>
+
+       
+       
+<BR CLEAR=ALL><HR WIDTH=50% SIZE=5><P ALIGN=CENTER>
+<FONT SIZE=5><A HREF="http://www.tardis.ed.ac.uk/~ark/">
+<FONT SIZE=7>A</FONT>lex <FONT SIZE=7>K</FONT>nowles</a>
+<A HREF="mailto:alex@ed.ac.uk">(alex@ed.ac.uk)</A></FONT></p>
+</BODY></HTML>

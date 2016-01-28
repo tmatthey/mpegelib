@@ -1,0 +1,23 @@
+<HTML><HEAD><TITLE>MPEGe_close</TITLE></HEAD><BODY>
+Last Modified: Time-stamp: "08 Dec 95 2327 Alex Knowles"
+<H1 ALIGN=CENTER>MPEGe_close</H1>
+
+<PRE>
+int MPEGe_close( void );
+</PRE>
+
+<P>Once you have added all the images you want in your MPEG stream
+this function will reset the library to a sane state and create the
+MPEG end sequences and close the output file</P>
+
+<P>After this function has been called your finished MPEG stream will
+be waiting for you to play with it :-) </P>
+
+<P>The function returns non NULL (i.e. TRUE) on success and Zero (or
+FALSE) on <A HREF="MPEGe_error.html">failure</A>.</P>
+
+<BR CLEAR=ALL><HR WIDTH=50% SIZE=5><P ALIGN=CENTER>
+<FONT SIZE=5><A HREF="http://www.tardis.ed.ac.uk/~ark/">
+<FONT SIZE=7>A</FONT>lex <FONT SIZE=7>K</FONT>nowles</a>
+<A HREF="mailto:alex@ed.ac.uk">(alex@ed.ac.uk)</A></FONT></p>
+</BODY></HTML>

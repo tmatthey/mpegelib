@@ -1,0 +1,18 @@
+#!/bin/sh
+# File: setversion		-*- Ksh -*- 
+# Created by: Alex Knowles (alex@ed.ac.uk) Mon Dec  4 13:41:44 1995
+# Last Modified: Time-stamp: <06 Dec 95 1117 Alex Knowles> 
+# RCS $Id: setversion,v 1.2 1995/12/06 11:18:16 ark Exp $ 
+
+# this gets the version of mpeg_encode you're using and set's it in arklib.c
+
+if [ -r mpeg.c ]; then
+  echo "#line 1 \"arklib.c\" /* automagicly created from arklib.c*/">mpegelib.c
+  LINE=`grep '#define *VERSION' mpeg.c`
+  VER=`echo $LINE | cut -d" " -f 3`
+  cat arklib.c | sed -e \
+   "s/#define VERSION \".*\"/#define VERSION $VER/" >>mpegelib.c
+else
+  echo "Couldn't find mpeg.c"
+  exit 1
+fi

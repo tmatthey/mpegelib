@@ -1,0 +1,13 @@
+#!/bin/sh
+# File: mklibmpeg		-*- Ksh -*- 
+# Created by: Alex Knowles (alex@ed.ac.uk) Fri Dec  1 17:36:22 1995
+# Last Modified: Time-stamp: <05 Dec 95 1756 Alex Knowles> 
+# RCS $Id: mkarkmpeg,v 1.2 1995/12/05 18:00:24 ark Exp $ 
+if [ -r mpeg.c ]; then
+  echo "#line 1 \"mpeg.c\" /* this is a modified version of mpeg.c*/">ARKmpeg.c
+  cat mpeg.c | sed -e 's/^static //' >>ARKmpeg.c
+  echo Made ARKmpeg.c
+else
+  echo "Couldn't find mpeg.c"
+  exit 1
+fi

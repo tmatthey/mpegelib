@@ -1,0 +1,59 @@
+<HTML><HEAD><TITLE>MPEGe Options</TITLE></HEAD><BODY>
+Last Modified: Time-stamp: "08 Dec 95 2316 Alex Knowles"
+<H1 ALIGN=CENTER>MPEGe Options</H1>
+
+<P>If you want to use different options rather than the default ones,
+then a structure is provided to allow you to pass your options onto
+MPEGelib. You can fill in this structure entirely on your own, but it
+is recommended that you obtain a copy of the default structure and
+modify the options you want to change</P>
+
+<P>The options structure looks like this
+<PRE>
+typedef struct {
+  int 	gop_size;
+  char 	*frame_pattern; 	/* order of the I, B &amp; P frames */
+  int	slices_per_frame;
+  int	search_range[2];
+  int	IQscale;
+  int	BQscale;
+  int	PQscale;
+  int 	bit_rate;		/* -1 for variable or specify your own */
+  int	buffer_size;
+  enum { HALF, FULL } pixel_search;
+  enum { P_EXHAUSTIVE, P_SUBSAMPLE, P_LOGARITHMIC, P_TWOLEVEL } psearchalg;
+  enum { B_SIMPLE, B_CROSS2, B_EXHAUSTIVE } bsearchalg;
+} MPEGe_options;
+</PRE>
+
+<P>All the options do the same as their corresponding option in the
+parameter file for the <A
+HREF="http://www-plateau.cs.berkeley.edu/mpeg/mpeg_encode.html">Berkeley
+MPEG encoder</A> see the documentation provided with the encoder to
+find out what each does</P>
+
+<P>getting the default options is easy with the function<BR>
+<TT>MPEGe_options *MPEGe_default_options( MPEGe_options * );</TT>
+The argument is optional if it is NULL then memory is allocated for a
+MPEGe_options structure and it is filled with the default options and
+the address returned. Otherwise the structure passed to it is filled
+with the default options and the address of that structure
+returned</P>
+
+<h2>Modifying the Default Options</h2>
+
+<P>Now you have a copy of the default options you can simply put in
+your new values.<BR>
+
+<B>NOTE:</B>when filling the options which are of type <TT>char *</TT>
+remember to set them to point to a string you have created space for
+(and if you are memory conscious remember to free what was there).
+<TT>strcpy( options->frame_pattern, "IBBPBBPBBP" );</TT> is a strict
+<B>NO NO</B> (unless of course you have alloced memory to
+frame_pattern yourself)</P>
+
+<BR CLEAR=ALL><HR WIDTH=50% SIZE=5><P ALIGN=CENTER>
+<FONT SIZE=5><A HREF="http://www.tardis.ed.ac.uk/~ark/">
+<FONT SIZE=7>A</FONT>lex <FONT SIZE=7>K</FONT>nowles</a>
+<A HREF="mailto:alex@ed.ac.uk">(alex@ed.ac.uk)</A></FONT></p>
+</BODY></HTML>

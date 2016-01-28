@@ -1,0 +1,24 @@
+<HTML><HEAD><TITLE>MPEGe_ImVfbAlloc</TITLE></HEAD><BODY>
+Last Modified: Time-stamp: "04 Dec 95 1749 Alex Knowles"
+<H1 ALIGN=CENTER>MPEGe_ImVfbAlloc</H1>
+
+<PRE>
+ImVfb *MPEGe_ImVfbAlloc(int width,  int height,
+                        int fields, int for_image );
+</PRE>
+
+<P>This function is designed to allow to easily allocate memory for an
+ImVfb. It is basically a copy of ImVfbAlloc from the <A
+HREF="SDSCil.html">SDSC Image Library</A> with an extra added argument
+<TT>for_image</TT> if this is TRUE then memory is allocated to store
+the image, otherwise only memory for the ImVfb struct is allocated
+(useful for just using the ImVfb to index into your own arrays)</P>
+
+<P>To find out more about ImVfb's check out my <A
+HREF="image_types.html">Image types</A> page</P>
+
+<BR CLEAR=ALL><HR WIDTH=50% SIZE=5><P ALIGN=CENTER>
+<FONT SIZE=5><A HREF="http://www.tardis.ed.ac.uk/~ark/">
+<FONT SIZE=7>A</FONT>lex <FONT SIZE=7>K</FONT>nowles</a>
+<A HREF="mailto:alex@ed.ac.uk">(alex@ed.ac.uk)</A></FONT></p>
+</BODY></HTML>

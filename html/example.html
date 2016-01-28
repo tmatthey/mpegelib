@@ -1,0 +1,33 @@
+<HTML><HEAD><TITLE>MPEGelib Example App</TITLE></HEAD><BODY>
+Last Modified: Time-stamp: "08 Dec 95 2324 Alex Knowles"
+<H1 ALIGN=CENTER>MPEGelib Example App</H1>
+
+
+<P>To try and show you how to use MPEGelib I have written a small
+Application to make MPEG movies from a sequence of ppm files (and a
+very small subset of ppm images at that)</P>
+
+<P>The example app is in the directory <TT>libexample</TT> and comes
+with some sample images to turn into an MPEG movie for you</P>
+
+<P>The calling convention for the app is<BR>
+<TT>simple_encode <start_frame> <end_frame> <file_prefix> <output_file></TT>
+</P>
+
+<P>check out the source code to work out how it works</P>
+
+<P>to Make the movie from the example images first compile the
+program (after editing the makefile) and then type<BR>
+<TT>./simple_encode 0 15 data/pic test.mpg</TT><BR>
+This code is really just to show you how to use the library and fill
+up an ImVfb. The ppm reading stuff is rubbish and probably only reads
+in the images provided. If you want to make an MPEG movie of ppm
+images (or any other format) then of course you should be using <A
+HREF="http://www-plateau.cs.berkeley.edu/mpeg/mpeg_encode.html">Berkeley
+MPEG encoder</A></P>
+
+<BR CLEAR=ALL><HR WIDTH=50% SIZE=5><P ALIGN=CENTER>
+<FONT SIZE=5><A HREF="http://www.tardis.ed.ac.uk/~ark/">
+<FONT SIZE=7>A</FONT>lex <FONT SIZE=7>K</FONT>nowles</a>
+<A HREF="mailto:alex@ed.ac.uk">(alex@ed.ac.uk)</A></FONT></p>
+</BODY></HTML>

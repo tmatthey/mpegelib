@@ -1,0 +1,30 @@
+<HTML><HEAD><TITLE>MPEGe_open</TITLE></HEAD><BODY>
+Last Modified: Time-stamp: "08 Dec 95 2326 Alex Knowles"
+<H1 ALIGN=CENTER>MPEGe_open</H1>
+
+<PRE>
+int MPEGe_open( FILE *mpegfile, MPEGe_options *options );
+</PRE>
+
+<P>This is the initialisation function which must be called before any
+of the others in the MPEGe library. There are only 2 arguments and the
+second is optional
+
+<DL>
+  <DT><TT>mpegfile</TT>
+  <DD>This should be a non-NULL file pointer to the file you wish the
+       MPEG stream to be output to.
+  <DT><TT>options</TT>
+  <DD>This allows you to specify how the MPEG encoder does it's
+  encoding. If this is NULL then the default options are used. See my
+  page on <A HREF="options.html">options</A> for more info.
+</DL>
+
+<P>The function returns non NULL (i.e. TRUE) on success and Zero (or
+FALSE) on <A HREF="MPEGe_error.html">failure</A>.</P>
+
+<BR CLEAR=ALL><HR WIDTH=50% SIZE=5><P ALIGN=CENTER>
+<FONT SIZE=5><A HREF="http://www.tardis.ed.ac.uk/~ark/">
+<FONT SIZE=7>A</FONT>lex <FONT SIZE=7>K</FONT>nowles</a>
+<A HREF="mailto:alex@ed.ac.uk">(alex@ed.ac.uk)</A></FONT></p>
+</BODY></HTML>

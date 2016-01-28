@@ -1,0 +1,19 @@
+Here's a list of the files provided in Alex's MPEGelib MPEG compression library
+
+File list starts here:-
+FILES				this file
+README.lib			README for MPEGelib
+TODO.lib			TODO list for the library
+INSTALL.lib			directions on installing MPEGelib
+CHANGELOG.lib			what's happened
+Makefile.lib 			the makefile for the library
+arklib.c     			the source for the library functions
+mpege.h      			the header file fo rthe library
+mkarkmpeg    			script to make my version of mpeg.c (ARKmpeg.c)
+setversion			script to get version of mpeg_encode
+noparallel.fix.c		fix for noparallel.c which comes with 1.5b
+mpege_im.h			My cut down ver of SDSC Image Library header
+html/*.html			HTML documentation for library
+libexample/Makefile		makefile for simple_encode demo program
+libexample/simple_encode.c	source code for simple_encode
+libexample/data/pic*		sample images to test simple_encode

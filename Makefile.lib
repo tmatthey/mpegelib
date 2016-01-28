@@ -1,0 +1,70 @@
+# File: Makefile.lib		-*- Makefile -*- 
+# Created by: Alex Knowles (alex@ed.ac.uk) Fri Dec  1 17:44:52 1995
+# Last Modified: Time-stamp: <15 Aug 96 1617 Alex Knowles> 
+# RCS $Id: Makefile.lib,v 1.3 1995/12/05 14:39:33 ark Exp $ 
+
+# this is the makefile for Alex's MPEG library (MPEGelib)
+
+# most fo the configuration has been done in the mpeg_encode makefile
+# but you must specify if ranlib is needed here
+
+#if your system doens't need ranlib use this (Solaris/ Hpux)
+# RANLIB=echo
+#if your system needs ranlib use this
+RANLIB=ranlib
+
+
+# Chnage thsi to your installation program
+# INSTALL= /usr/local/bin/install -c  -m 644
+INSTALL= cp
+
+# by default this is installed in your home dir
+prefix = $$HOME
+libdir = $(prefix)/lib
+incdir = $(prefix)/include
+
+# it uses the makefile which you have set up for mpeg_encode
+MAKEFILE=./Makefile
+
+default: lib
+
+include $(MAKEFILE)
+
+ARKHEADERS=mpege.h mpege_im.h
+
+ARKSRC=mpegelib.c ARKmpeg.c
+ARKOBJ=mpegelib.o ARKmpeg.o
+MP_JPEG_OBJS = nojpeg.o
+MP_JPEG_SRCS = nojpeg.c
+MP_PARALLEL_OBJS = noparallel.fix.o
+MP_PARALLEL_SRCS = noparallel.fix.c
+
+MP_LIB_SRCS = $(MP_BASE_SRCS) $(MP_OTHER_SRCS) $(MP_ENCODE_SRCS) \
+            $(MP_PARALLEL_SRCS) $(MP_JPEG_SRCS) $(ARKSRC)
+MP_LIB_OBJS = $(MP_BASE_OBJS) $(MP_OTHER_OBJS) $(MP_ENCODE_OBJS) \
+	    $(MP_PARALLEL_OBJS) $(MP_JPEG_OBJS) $(ARKOBJ)
+
+lib: libmpege
+
+libmpege: libmpege.a
+
+libmpege.a:  $(MP_LIB_OBJS) $(ARKHEADERS)
+	$(AR) r $@ $(MP_LIB_OBJS)
+	$(RANLIB) $@
+
+ARKmpeg.o: ARKmpeg.c
+
+# this makes some of the functions in mpeg.c visable to my library
+ARKmpeg.c: mpeg.c
+	./mkarkmpeg
+
+mpegelib.o: mpegelib.c
+
+# setversion grabs the version of mpeg_encode you are using
+mpegelib.c: arklib.c
+	./setversion
+
+install: libmpege.a $(ARKHEADERS)
+	$(INSTALL) libmpege.a $(libdir)/libmpege.a
+	$(INSTALL) mpege.h    $(incdir)/mpege.h
+	$(INSTALL) mpege_im.h $(incdir)/mpege_im.h
